@@ -226,7 +226,7 @@ set autoindent " automatically set indent of new line
 " set paste toggle: see leader v
 set pastetoggle=<F6>
 " set smartindent
-let g:python3_host_prog = '/Users/damca/anaconda3/bin/python'
+let g:python3_host_prog = '/Users/cocamc/anaconda3/bin/python'
 let g:nvim_ipy_perform_mappings = 0
 let g:silent_custom_command = 0
 " let g:rnu_on = 0

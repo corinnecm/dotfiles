@@ -72,7 +72,7 @@ Ideally there would be a way to make Dropbox's menu bar look like this:
 
 I suggest running a `launchd` process to remind you when Dropbox is paused, so you don't forget. Reminders will come through the Notification center.
 
-1. Install [me.damca.is-dropbox-paused.plist](com.tjluoma.is-dropbox-paused.plist) to **~/Library/LaunchAgents/**.
+1. Install [me.cocamc.is-dropbox-paused.plist](com.tjluoma.is-dropbox-paused.plist) to **~/Library/LaunchAgents/**.
 
 2. Install [is-dropbox-paused.sh](is-dropbox-paused.sh) somewhere in your `$PATH`. (I do ~/.dotfiles/bin)
 
@@ -83,5 +83,5 @@ By default, `is-dropbox-paused.sh` will run every 15 minutes (900 seconds) but y
 
 Change '900' to however many seconds you want to elapse between checks.
 
-Note that `is-dropbox-paused.sh` is intentionally designed to exit very quickly if Dropbox is *not* paused, so it should have a negligible effect on your Mac. However, `dropbox-pause-unpause.sh` is designed to automatically load `me.damca.is-dropbox-paused.plist` when Dropbox is paused and unload it when it is un-paused, so it will not be running unless you have paused Dropbox.
+Note that `is-dropbox-paused.sh` is intentionally designed to exit very quickly if Dropbox is *not* paused, so it should have a negligible effect on your Mac. However, `dropbox-pause-unpause.sh` is designed to automatically load `me.cocamc.is-dropbox-paused.plist` when Dropbox is paused and unload it when it is un-paused, so it will not be running unless you have paused Dropbox.
 

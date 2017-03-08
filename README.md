@@ -28,7 +28,7 @@ Know thine editor. Turns out editing is more important than dumping content. Neo
 
 ```
 cd ~
-git clone https://github.com/damca/dotfiles
+git clone https://github.com/cocamc/dotfiles
 mv dotfiles .dotfiles
 bash .dotfiles/install.sh
 ```

@@ -31,7 +31,7 @@ exit 0
 
 }
 
-PLIST="$HOME/Library/LaunchAgents/me.damca.is-dropbox-paused.plist"
+PLIST="$HOME/Library/LaunchAgents/me.cocamc.is-dropbox-paused.plist"
 
 unload_plist () {
 

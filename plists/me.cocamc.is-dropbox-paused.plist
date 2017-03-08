@@ -5,10 +5,10 @@
 	<key>AbandonProcessGroup</key>
 	<true/>
 	<key>Label</key>
-	<string>me.damca.is-dropbox-paused</string>
+	<string>me.cocamc.is-dropbox-paused</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Users/damca/.dotfiles/bin/is-dropbox-paused.sh</string>
+		<string>/Users/cocamc/.dotfiles/bin/is-dropbox-paused.sh</string>
 	</array>
 	<key>StandardErrorPath</key>
 	<string>/tmp/is-dropbox-paused-err.txt</string>

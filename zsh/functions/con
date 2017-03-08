@@ -10,7 +10,7 @@ function con {
 		echo "Removing ../anaconda3/.. paths from PATH"
 		export PATH=`echo ${PATH} | awk -v RS=: -v ORS=: '/anaconda3/ {next} {print}'`
 	else
-		echo "Adding /Users/damca/anaconda3/bin to PATH"
-		export PATH="/Users/damca/anaconda3/bin:$PATH"
+		echo "Adding /Users/cocamc/anaconda3/bin to PATH"
+		export PATH="/Users/cocamc/anaconda3/bin:$PATH"
 	fi
 	}

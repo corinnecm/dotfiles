@@ -8,15 +8,15 @@
 		<false/>
 	</dict>
 	<key>Label</key>
-	<string>me.damca.backupdotfiles</string>
+	<string>me.cocamc.backupdotfiles</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Users/damca/.dotfiles/bin/backupdotfiles.sh</string>
+		<string>/Users/cocamc/.dotfiles/bin/backupdotfiles.sh</string>
 	</array>
 	<key>StandardErrorPath</key>
-	<string>/Users/damca/.dotfiles/backuperr.log</string>
+	<string>/Users/cocamc/.dotfiles/backuperr.log</string>
 	<key>StandardOutPath</key>
-	<string>/Users/damca/.dotfiles/backup.log</string>
+	<string>/Users/cocamc/.dotfiles/backup.log</string>
 	<key>StartCalendarInterval</key>
 	<dict>
 		<key>Hour</key>

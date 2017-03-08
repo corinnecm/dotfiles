@@ -8,21 +8,24 @@
 		<false/>
 	</dict>
 	<key>Label</key>
-	<string>me.damca.backupgit</string>
+	<string>me.cocamc.brewd</string>
 	<key>ProgramArguments</key>
 	<array>
-		<string>/Users/damca/.dotfiles/bin/backupgit.sh</string>
+		<string>/usr/local/bin/brew</string>
+		<string>update</string>
 	</array>
 	<key>StandardErrorPath</key>
-	<string>/Users/damca/git/backuperr.log</string>
+	<string>/usr/local/var/brewd/error.log</string>
 	<key>StandardOutPath</key>
-	<string>/Users/damca/git/backup.log</string>
+	<string>/usr/local/var/brewd/output.log</string>
 	<key>StartCalendarInterval</key>
 	<dict>
 		<key>Hour</key>
 		<integer>10</integer>
 		<key>Minute</key>
 		<integer>0</integer>
+		<key>Weekday</key>
+		<integer>2</integer>
 	</dict>
 	<key>ThrottleInterval</key>
 	<integer>60</integer>

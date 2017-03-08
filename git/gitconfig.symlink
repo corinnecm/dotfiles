@@ -1,9 +1,9 @@
 # gitconfig
 [user]
-	name = damca
-	email = dmcaffee@berkeley.edu
+	name = corinnecm
+	email = corinne.carlson5@gmail.com
 [github]
-    user = damca 
+    user = corinnecm
 [init]
 # hooks and other info is copied into each new .git
     templatedir = ~/.dotfiles/git/templates
