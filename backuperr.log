@@ -1,1 +1,17 @@
-/Users/cocamc/.dotfiles/bin/backupdotfiles.sh:7: command not found: dropbox-pause-unpause.sh
+Attempted backup 02.04.17-22:26:35, hasn't been week since last backup in log
+python: can't open file 'has_been_week.py': [Errno 2] No such file or directory
+Attempted backup 02.04.17-22:42:30, hasn't been week since last backup in log
+python: can't open file 'has_been_week.py': [Errno 2] No such file or directory
+Attempted backup 06.04.17-12:00:04, hasn't been week since last backup in log
+python: can't open file 'has_been_week.py': [Errno 2] No such file or directory
+Attempted backup 13.04.17-12:00:00, hasn't been week since last backup in log
+python: can't open file 'has_been_week.py': [Errno 2] No such file or directory
+Attempted backup 19.04.17-11:28:31, hasn't been week since last backup in log
+python: can't open file 'has_been_week.py': [Errno 2] No such file or directory
+Attempted backup 20.04.17-12:00:06, hasn't been week since last backup in log
+python: can't open file 'has_been_week.py': [Errno 2] No such file or directory
+Attempted backup 24.04.17-11:50:16, hasn't been week since last backup in log
+python: can't open file 'has_been_week.py': [Errno 2] No such file or directory
+Attempted backup 27.04.17-12:00:02, hasn't been week since last backup in log
+python: can't open file 'has_been_week.py': [Errno 2] No such file or directory
+Attempted backup 04.05.17-12:24:24, hasn't been week since last backup in log

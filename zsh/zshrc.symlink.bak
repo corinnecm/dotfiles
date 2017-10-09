@@ -33,9 +33,16 @@ for config ($ZSH/**/*.zsh) source $config
 
 export EDITOR='nvim'
 
-# Make hombrew stuff available. Prepend to PATH to make preferred over system bindings.
-# For example homebrew ctags (/usr/local/bin/ctags) is better than system's (/usr/bin/ctags)
-export PATH=$PATH:/usr/local/bin
+# Using new JAVA_HOME for pims.Bioformats
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
+
+# Adding java to path
+export PATH=$JAVA_HOME/bin:$PATH
+
+export PATH="/Users/cocamc/anaconda3/bin:$PATH"
+
+# Make hombrew stuff available
+export PATH=/usr/local/bin:$PATH
 
 # add /usr/local/sbin, this sbin is for scripts that need superuser priveledges. We don't need that right now.
 # if [[ -d /usr/local/sbin ]]; then
@@ -53,7 +60,6 @@ fi
 # This syntax is a 'if [ ] then' shorthand.
 # The first evaluates if the string is null.
 [ -z "$TMUX" ] && export TERM=xterm-256color-italic
-export COLORTERM=gnome-terminal  # Fixes a scrolling issue in neovim, apparently some terminals false advertise as xterm
 
 # If rbenv installed. Initiate
 if hash rbenv 2>/dev/null; then
@@ -93,25 +99,24 @@ fi
 # export NVM_DIR="/Users/cocamc/.nvm"
 # . "/usr/local/opt/nvm/nvm.sh"
 
-# Base16 Shell
+# # Base16 Shell
+# if [ -z "$THEME" ]; then
+#     export THEME="base16-atelier-lakeside"
+# fi
+# if [ -z "$BACKGROUND" ]; then
+#     export BACKGROUND="dark"
+# fi
 
 # BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
 # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 # source $BASE16_SHELL
 
-# Will declare BASE16_THEME, from base16_theme -> BASE16_SHELL/__shell
-BASE16_SHELL=$DOTFILES/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # If you are using the fzf plugin
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-# Using new JAVA_HOME for pims.Bioformats
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home
 
-export PATH="$HOME/anaconda3/bin:$PATH"
-export PYTHONPATH="$HOME/bin"
 
 # Run Postgres through zsh command line
 export PATH="/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH"
@@ -124,12 +129,12 @@ export AWS_ACCESS_KEY_ID='AKIAJSORRKUNDCUE7M6Q'
 export AWS_SECRET_ACCESS_KEY='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'
 
 # Apache-Spark
-# export SPARK_HOME=`brew info apache-spark | grep /usr | tail -n 1 | cut -f 1 -d " "`/libexec
-# export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
+export SPARK_HOME=`brew info apache-spark | grep /usr | tail -n 1 | cut -f 1 -d " "`/libexec
+export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
 
 # Hadoop
-# export HADOOP_HOME=`brew info hadoop | grep /usr | head -n 1 | cut -f 1 -d " "`/libexec
-# export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native/:$LD_LIBRARY_PATH
+export HADOOP_HOME=`brew info hadoop | grep /usr | head -n 1 | cut -f 1 -d " "`/libexec
+export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native/:$LD_LIBRARY_PATH
 
 # Run Scripts folder
 export PATH="/Users/cocamc/scripts:$PATH"
@@ -144,6 +149,3 @@ export DSN='sosql2'
 # export UID='SA'
 export PWD='Corinn3!'
 export DATABASE='ms_stack_overflow'
-
-export PATH="/usr/local/sbin:$PATH"
-export HOMEBREW_GITHUB_API_TOKEN="e459769fc02145a23717e4212778a02ec56f2242"

@@ -1,13 +1,13 @@
-
+" :help runtime, :echo $VIMRUNTIME
 " :help plugins
 " :scriptnames   show all scripts loaded in the current session.
 "                generally follows: plugins, ftplugin, after/ftplugin, syntax, after/syntax
 " :set ro        be careful with important files
 
-
 """""""""""""
 ""PLUGINS"""
 """""""""""""
+
 call plug#begin('~/.config/nvim/plugged')
 """ON DEMAND LOADING""" so its not slow (like webstorm):  Plug 'plugin' { 'on': ['cmd1', 'cmd2']}
 """GROUP DEPENDENCIES""" Plug 'independent' | Plug 'dependent'
@@ -15,15 +15,13 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'chriskempson/base16-vim'
 " utilities
 Plug 'bfredl/nvim-ipy' " send/recieve code to IPython kernel
-" Plug 'ctrlpvim/ctrlp.vim' " fuzzy file finder, 
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-" Plug 'ryanoasis/vim-devicons' " file drawer, these can be pretty distracting
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ctrlpvim/ctrlp.vim' " fuzzy file finder, mapped to <leader>r
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' " file drawer
 Plug 'mileszs/ack.vim' " search inside files using ack. Same as command line ack utility, but use :Ack
 Plug 'rking/ag.vim' " Ag commands
 Plug 'Raimondi/delimitMate' " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'tpope/vim-commentary' " comment stuff out, gcc: line, gc: selection
-Plug 'tpope/vim-unimpaired' " READ which are simply short normal mode aliases for commonly used ex commands
+Plug 'tpope/vim-unimpaired' " mappings which are simply short normal mode aliases for commonly used ex commands
 " Plug 'tpope/vim-endwise' " automatically add end in ruby
 Plug 'tpope/vim-ragtag' " endings for html, xml, etc. - ehances surround
 Plug 'tpope/vim-surround' " mappings to easily delete, change and add such surroundings in pairs, such as quotes, parens, etc.
@@ -31,7 +29,7 @@ Plug 'benmills/vimux' " tmux integration for vim
 Plug 'vim-airline/vim-airline' " fancy statusline: see :help statusline
 Plug 'vim-airline/vim-airline-themes' " themes for vim-airline
 " Plug 'scrooloose/syntastic' " syntax checking for vim
-Plug 'benekastah/neomake' " neovim replacement for syntastic using neovim's job control functonality
+" Plug 'benekastah/neomake' " neovim replacement for syntastic using neovim's job control functonality
 Plug 'tpope/vim-fugitive' " amazing git wrapper for vim
 Plug 'tpope/vim-characterize'  " ga to characterize unicode characters
 Plug 'tpope/vim-repeat' " enables repeating other supported plugins with the . command
@@ -47,7 +45,7 @@ Plug 'tpope/vim-dispatch' " asynchronous build and test dispatcher
 " Plug 'tpope/vim-abolish'
 Plug 'AndrewRadev/splitjoin.vim' " single/multi line code handler: gS - split one line into multiple, gJ - combine multiple lines into one
 Plug 'vim-scripts/matchit.zip' " extended % matching
-" Plug 'tpope/vim-sleuth' " detect indent style (tabs vs. spaces)
+Plug 'tpope/vim-sleuth' " detect indent style (tabs vs. spaces)
 Plug 'sickill/vim-pasta' " context-aware pasting
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' } " distraction-free writing
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' } " focus tool. Good for presentating with vim
@@ -59,8 +57,7 @@ Plug 'darfink/vim-plist' " Support plist.
 " Plug 'pangloss/vim-javascript', { 'for': 'javascript' } " JavaScript support
 " Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' } " JavaScript indent support
 " Plug 'moll/vim-node', { 'for': 'javascript' } " node support
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' } " JavaScript syntax plugin
-Plug 'lambdalisue/vim-cython-syntax', {'for': 'cython'}
+" Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' } " JavaScript syntax plugin
 " Plug 'othree/yajs.vim', { 'for': 'javascript' } " JavaScript syntax plugin
 " Plug 'mxw/vim-jsx', { 'for': 'jsx' } " JSX support
 " Plug 'elzr/vim-json', { 'for': 'json' } " JSON support
@@ -79,35 +76,29 @@ Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open m
 " Plug 'fatih/vim-go', { 'for': 'go' } " go support
 " Plug 'timcharper/textile.vim', { 'for': 'textile' } " textile support
 " Plug 'tclem/vim-arduino' " arduino support - compile wihtout needing to open the arduino IDE
-call plug#end()
 
+call plug#end()
 
 """""""""""""""""""""""""""
 """GENERAL CONFIGURATION"""
 """""""""""""""""""""""""""
-
-function! ChompedSystem( ... )
-    return substitute(call('system', a:000), '\n\+$', '', '')
-endfunction
 
 " Abbreviations
 abbr funciton function
 abbr teh the
 abbr tempalte template
 abbr fitler filter
-" Terminal settings
 set nocompatible " not compatible with vi
-set splitright " default right with :vnew
 set autoread " detect when a file is changed
 " make backspace behave in a sane manner
 set backspace=indent,eol,start
 " set a map leader for more key combos
-let g:mapleader = " "
+let g:mapleader = ','
 set history=1000 " change history to 1000
 set textwidth=120
 " Tab control
 set noexpandtab " insert tabs rather than spaces for <Tab>
-" set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
 set tabstop=4 " the visible width of tabs
 set softtabstop=4 " edit as if the tabs are 4 characters wide
 set shiftwidth=4 " number of spaces to use for indent and unindent
@@ -132,13 +123,14 @@ set autoread
 " tell vim where to put swap files
 " set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set laststatus=2 " show the satus line all the time
-" cursorline mappings in unimpaired
-" set cursorline " can make scrolling too slow
+" Can toggle local cursorline with leader ll
+" set cursorline "can make scrolling too slow
 
 
 """""""""""""""""""""
 """""AUTOGROUPS"""""
 """""""""""""""""""""
+
 " :help autocmd
 " :set filetype? (see what filetype has been detected)
 " :help ftplugin-overrule
@@ -151,7 +143,7 @@ augroup configgroup
     autocmd FileType jade setlocal ts=2 sts=2 sw=2 noexpandtab
     autocmd FileType python setlocal expandtab
     autocmd FileType *.md.js :call SyntasticReset<cr>
-    autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap " spell
+    autocmd FileType markdown,textile setlocal textwidth=0 wrapmargin=0 wrap spell
     autocmd FileType .xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
     " autocmd FileType .plist setlocal nobackup nowritebackup " Using plugin now
     " automatically resize panes on resize
@@ -168,7 +160,6 @@ augroup configgroup
     autocmd BufNewFile,BufRead .jshintrc set filetype=json
     autocmd BufNewFile,BufRead .eslintrc set filetype=json
     autocmd BufNewFile,BufRead *.es6 set filetype=javascript
-    autocmd BufNewFile,BufRead *.cy set filetype=cython
     " make quickfix windows take all the lower section of the screen
     " when there are multiple windows open
     autocmd FileType qf wincmd J
@@ -183,7 +174,9 @@ augroup END
 """"""""""""""""""""
 """USER INTERFACE"""
 """"""""""""""""""""
+
 " see :help option-list
+
 " code folding settings
 set foldmethod=syntax " fold based on indent
 set foldnestmax=10 " deepest fold is 10 levels
@@ -196,9 +189,7 @@ set showcmd " show incomplete commands
 set noshowmode " don't show which mode disabled for PowerLine
 set wildmode=list:longest " complete files like a shell
 set scrolloff=3 " lines of text around cursor
-" Terminal
-let &shell=ChompedSystem("which zsh")  " way to use variables or output to set options
-" set shell=/bin/bash
+set shell=$SHELL
 set cmdheight=1 " command bar height
 set title " set terminal title
 " Searching
@@ -218,15 +209,11 @@ set tm=500
 " switch syntax highlighting on
 syntax on
 set encoding=utf8
-set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+" let base16colorspace=256  " Access colors present in 256 colorspace"
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors"
+" execute "set background=".$BACKGROUND
+" execute "colorscheme ".$THEME
 " if you have italic supported font and terminal
-highlight CursorLine term=bold cterm=bold ctermbg=darkblue
-" base16
-if filereadable(expand("~/.vimrc_background"))
-  " let base16colorspace=256
-  source ~/.vimrc_background
-endif
-" Setting italics must come after setting the colorscheme
 highlight Comment cterm=italic
 highlight htmlArg cterm=italic
 set number " show line numbers
@@ -235,20 +222,17 @@ set wrap "turn on line wrapping
 set wrapmargin=8 " wrap lines when coming within n characters from side
 set linebreak " set soft wrapping
 set showbreak=… " show ellipsis at breaking
-" set autoindent " automatically set indent of new line
-" paste toggle (yO, see unimpaired)
+set autoindent " automatically set indent of new line
+" set paste toggle: see leader v
+set pastetoggle=<F6>
 " set smartindent
-filetype plugin indent on
-
-
-
-let g:python3_host_prog = ChompedSystem("which python")
-let g:python_host_prog = globpath('~/anaconda3/envs/py27/bin', 'python')
+let g:python3_host_prog = '/Users/cocamc/anaconda3/bin/python'
 let g:nvim_ipy_perform_mappings = 0
 let g:silent_custom_command = 0
+" let g:rnu_on = 0
 " toggle invisible characters
 set invlist
-set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮  " col, unimpaire
+set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 " make the highlighting of tabs less annoying
 highlight SpecialKey ctermbg=none
 set showbreak=↪
@@ -274,13 +258,24 @@ let g:neomake_typescript_tsc_maker = {
         \ '%C%\s%\+%m'
 \ }
 " autocmd FileType javascript let g:neomake_javascript_enabled_makers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['eslint']
-" let g:neomake_javascript_enabled_makers = ['jshint', 'jscs']
-" Find tags 
-set tags+=doc/tags
-set tags+=.git/tags
+let g:neomake_javascript_enabled_makers = ['jshint', 'jscs']
+" ctrlp
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*checkpoint.ipynb     " MacOSX/Linux
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_map='<leader>t'
+" let g:ctrlp_dotfiles=1
+let g:ctrlp_working_path_mode = 'ra'
+" CtrlP ignore patterns
+" let g:ctrlp_custom_ignore = {
+"             \ 'dir': '\.git$\|node_modules$\|bower_components$\|\.hg$\|\.svn$',
+"             \ 'file': '\.exe$\|\.so$'
+"             \ }
+" only show files that are not ignored by git
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" search the nearest ancestor that contains .git, .hg, .svn
+" let g:ctrlp_working_path_mode = 2
 " airline
-let g:airline_powerline_fonts=0
+let g:airline_powerline_fonts=1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='base16_atelierlakeside'
@@ -299,33 +294,28 @@ if (has("gui_running"))
 endif
 
 
+
 """""""""""""""""""""
 """LEADER MAPPINGS"""
 """""""""""""""""""""
+
 " find all commented leader mappings: /".*\_s.*<leader>
 " ipy
-" nnoremap <leader>c :call IPyRun('plt.close("all")',1)<cr>
-
-" The default inline backend for jupyter console doesn't work with nvim-ipy, override with env var
-" let $MPLBACKEND = "macosx"
+nnoremap <leader>c :call IPyRun('plt.close("all")',1)<cr>
 " select whole block
 nmap <leader>p {V}
-" last tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
 " markdown to html
 nmap <leader>md :%!markdown --html4tags <cr>
 " remove extra whitespace
 nmap <leader><space> :%s/\s\+$<cr>
 " then wipes the last buffer. This retains split windows.
-nmap <silent> <leader>c :Bclose<cr>
-" shortcut to write
-nmap <leader>w :w<cr>
-" wipout buffr. bp selects previous (just needs to be different)
+nmap <silent> <leader>b :bp\|bd#<cr>
+" shortcut to save
+nmap <leader><leader> :w<cr>
+" wipout buffer. bp selects previous (just needs to be different)
 nmap <leader>q :q<cr>
-" toggle paste mode:   unimpaired yo
-" map <leader>v :set paste!<cr>
+" toggle paste mode
+map <leader>v :set paste!<cr>
 " edit ~/.config/nvim/init.vim
 map <leader>ev :e! ~/.config/nvim/init.vim<cr>
 " edit gitconfig
@@ -334,22 +324,26 @@ map <leader>eg :e! ~/.gitconfig<cr>
 map <leader>ez :e! ~/.zshrc<cr>
 " edit tmux
 map <leader>et :e! ~/.tmux.conf<cr>
-" edit aliases 
-map <leader>ea :e! ~/.dotfiles/zsh/aliases.zsh<cr>
 " edit snippets
 map <leader>es :e! ~/.config/nvim/snippets/
 " view tmux cheatsheet
 map <leader>vt :e! ~/.tmux-cheatsheet.markdown<cr>
-" toggle cursor line coc (unimpaired)
+" toggle cursor line
+nnoremap <leader>ll :set cursorline!<cr>
 " Textmate style indentation
 vmap <leader>[ <gv
 " switch between current and last buffer
-nmap <leader><leader> <c-^>
+nmap <leader>. <c-^>
 " search for word under the cursor
-nnoremap <leader>s "fyiw :/<c-r>f<cr>
-nmap <leader>o :Goyo<cr>
-" rnu toggle (cor, unimpaired)
-" number toggle (con, unimpaired)
+nnoremap <leader>/ "fyiw :/<c-r>f<cr>
+" inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+map <leader>r :call RunCustomCommand()<cr>
+nmap <leader>w :Goyo<cr>
+" clear all matches
+nnoremap <leader>0 :call clearmatches()<cr>
+" escape html
+nnoremap <silent> <leader>u :call HtmlUnEscape()<cr>
+" nnoremap <leader>z :call RnuToggle()<cr>
 " NERDTree
 nmap <silent> <leader>n :NERDTreeToggle<cr>
 " expand to the path of the file in the current buffer
@@ -361,11 +355,11 @@ vmap <leader>] >gv
 nmap <leader>[ <<
 nmap <leader>] >>
 " resize windows
-nmap <up> :res +10<cr>
-nmap <down> :res -10<cr>
-nmap <left> :vertical :res -10<cr>
-nmap <right> :vertical :res +10<cr>
-" map <leader>wc :wincmd q<cr>
+nmap <leader>j :res +10<cr>
+nmap <leader>k :res -10<cr>
+nmap <leader>l :vertical :res -10<cr>
+nmap <leader>h :vertical :res +10<cr>
+map <leader>wc :wincmd q<cr>
 " custom highlighters: see functions section
 " highlight interesting words
 nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
@@ -384,46 +378,48 @@ nmap <leader>m :MarkedOpen!<cr>
 nmap <leader>mq :MarkedQuit<cr>
 " limelight
 nmap <leader>f :Limelight!!<cr>
-" map <leader>s :call SetCustomCommand()<cr>
-" inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-" map <leader>r :call RunCustomCommand()<cr>
-" clear all matches
-nnoremap <leader>0 :call clearmatches()<cr>
-" escape html
-nnoremap <silent> <leader>u :call HtmlUnEscape()<cr>
+" ctrlp
+nmap <silent> <leader>r :CtrlPBuffer<cr>
+nmap <leader>t :CtrlP<cr>
+" ipython: :IPython<CR>
+imap <leader>i <esc>h<Plug>(IPy-WordObjInfo) 
+map <leader>i <Plug>(IPy-WordObjInfo) 
 
 """""""""""""""
 """MAPPTINGS"""
 """""""""""""""
-" remap esc
-inoremap ;a <esc>
-" Terminal
-tnoremap <esc> <C-\><C-n>
-" disable Ex mode
-noremap Q <NOP>
-" clear highlighted search (coh, unimpaired)
-" activate spell-checking alternatives
-nmap ;;s :set invspell spelllang=en<cr>
+
 " ipython
 imap <C-F> <Plug>(IPy-Complete)
-" send line or selection
 map ;s <Plug>(IPy-Run)
-" send paragraph, the /. helps execute indented blocks
-nmap ;d V}<Plug>(IPy-Run)}j
-imap ;i <Plug>(IPy-WordObjInfo)
-map ;i <Plug>(IPy-WordObjInfo)
-nmap \i <Plug>(IPy-Interrupt)
-" best way to restart is to close then send and reply 'yes' to prompt
-map ;c <Plug>(IPy-Terminate)
+nmap ;b {V}<Plug>(IPy-Run)}
+nmap ;i <Plug>(IPy-Interrupt)
+imap jb <esc>{V}<Plug>(IPy-Run)
+imap js <esc><Plug>(IPy-Run)
+" map <leader>s :call SetCustomCommand()<cr>
 nmap \s :set ts=4 sts=4 sw=4 et<cr>
 " nmap <leader>w :setf textile<cr> :Goyo<cr>
 nmap \t :set ts=4 sts=4 sw=4 noet<cr>
-nnoremap <space> i<space><esc>
 " latex
 " write file, then compile. %=filename, %:r=root
-" nnoremap \c :w<CR>:!rm *.aux *.blg *.bcf *.bbl *.run.xml; pdflatex %; biber %:r; pdflatex %; pdflatex %;<CR>
+nnoremap \c :w<CR>:!rm *.aux *.blg *.bcf *.bbl *.run.xml; pdflatex %; biber %:r; pdflatex %; pdflatex %;<CR>
 " view
-" nnoremap \v :!open -a Preview %:r.pdf &<CR><CR>
+nnoremap \v :!open -a Preview %:r.pdf &<CR><CR>
+" best way to restart is to close then send and reply 'yes' to prompt
+map <space>c <Plug>(IPy-Terminate)
+" Terminal
+tnoremap <esc> <C-\><C-n>
+" buffers
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
+" remap esc
+inoremap jk <esc>
+" disable Ex mode
+noremap Q <NOP>
+" clear highlighted search
+noremap <space>s :set hlsearch! hlsearch?<cr>
+" activate spell-checking alternatives
+nmap ;;s :set invspell spelllang=en<cr>
 " hi SpellBad ctermfg=015 ctermbg=000
 " enable . command in visual mode
 vnoremap . :normal .<cr>
@@ -456,104 +452,15 @@ nmap \ gc
 """FUNCTIONS"""
 """""""""""""""
 
-" The bang ! will suppress output when sourced.
-" s: makes the function accessible within the vimrc, not outside
-
-" thanks to @xolox on stackoverflow
-function! s:Get_visual_selection()
-    let [lnum1, col1] = getpos("'<")[1:2]
-    let [lnum2, col2] = getpos("'>")[1:2]
-    let lines = getline(lnum1, lnum2)
-    let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
-    let lines[0] = lines[0][col1 - 1:]
-    return join(lines, "\n")
-endfunction
-
-" Delete buffer while keeping window layout (don't close buffer's windows).
-" Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
-if v:version < 700 || exists('loaded_bclose') || &cp
-  finish
-endif
-let loaded_bclose = 1
-if !exists('bclose_multiple')
-  let bclose_multiple = 1
-endif
-
-" Display an error message.
-function! s:Warn(msg)
-  echohl ErrorMsg
-  echomsg a:msg
-  echohl NONE
-endfunction
-
-" Command ':Bclose' executes ':bd' to delete buffer in current window.
-" The window will show the alternate buffer (Ctrl-^) if it exists,
-" or the previous buffer (:bp), or a blank buffer if no previous.
-" Command ':Bclose!' is the same, but executes ':bd!' (discard changes).
-" An optional argument can specify which buffer to close (name or number).
-function! s:Bclose(bang, buffer)
-  if empty(a:buffer)
-    let btarget = bufnr('%')
-  elseif a:buffer =~ '^\d\+$'
-    let btarget = bufnr(str2nr(a:buffer))
-  else
-    let btarget = bufnr(a:buffer)
-  endif
-  if btarget < 0
-    call s:Warn('No matching buffer for '.a:buffer)
-    return
-  endif
-  if empty(a:bang) && getbufvar(btarget, '&modified')
-    call s:Warn('No write since last change for buffer '.btarget.' (use :Bclose!)')
-    return
-  endif
-  " Numbers of windows that view target buffer which we will delete.
-  let wnums = filter(range(1, winnr('$')), 'winbufnr(v:val) == btarget')
-  if !g:bclose_multiple && len(wnums) > 1
-    call s:Warn('Buffer is in multiple windows (use ":let bclose_multiple=1")')
-    return
-  endif
-  let wcurrent = winnr()
-  for w in wnums
-    execute w.'wincmd w'
-    let prevbuf = bufnr('#')
-    if prevbuf > 0 && buflisted(prevbuf) && prevbuf != w
-      buffer #
-    else
-      bprevious
-    endif
-    if btarget == bufnr('%')
-      " Numbers of listed buffers which are not the target to be deleted.
-      let blisted = filter(range(1, bufnr('$')), 'buflisted(v:val) && v:val != btarget')
-      " Listed, not target, and not displayed.
-      let bhidden = filter(copy(blisted), 'bufwinnr(v:val) < 0')
-      " Take the first buffer, if any (could be more intelligent).
-      let bjump = (bhidden + blisted + [-1])[0]
-      if bjump > 0
-        execute 'buffer '.bjump
-      else
-        execute 'enew'.a:bang
-      endif
-    endif
-  endfor
-  execute 'bdelete'.a:bang.' '.btarget
-  execute wcurrent.'wincmd w'
-endfunction
-command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
-
-" Move barrier using resize commands
-function! WinMove(key)
-    let t:curwin = winnr()
-    exec "wincmd ".a:key
-    if (t:curwin == winnr())
-        if (match(a:key,'[jk]'))
-            wincmd v
-        else
-            wincmd s
-        endif
-        exec "wincmd ".a:key
-    endif
-endfunction
+" function! RnuToggle()
+" 	if g:rnu_on
+" 		setlocal nornu
+" 		let g:rnu_on = 0
+" 	else
+" 		setlocal rnu
+" 		let g:rnu_on = 1
+" 	endif
+" endfunction
 "
 " Window movement shortcuts
 " move to the window in the direction shown, or create a new window
@@ -569,7 +476,6 @@ function! WinMove(key)
         exec "wincmd ".a:key
     endif
 endfunction
-
 " recursively search up from dirname, sourcing all .vimrc.local files along the way
 function! ApplyLocalSettings(dirname)
     " convert windows paths to unix style
@@ -587,7 +493,6 @@ function! ApplyLocalSettings(dirname)
     endif
 endfunction
 call ApplyLocalSettings(expand('.'))
-
 " smart tab completion
 function! Smart_TabComplete()
     let line = getline('.')                         " current line
@@ -608,7 +513,6 @@ function! Smart_TabComplete()
         return '\<C-X>\<C-O>'                         " plugin matching
     endif
 endfunction
-
 " execute a custom command
 function! RunCustomCommand()
     up
@@ -618,21 +522,12 @@ function! RunCustomCommand()
         execute '!' . s:customcommand
     endif
 endfunction
-
 function! SetCustomCommand()
     let s:customcommand = input('Enter Custom Command$ ')
 endfunction
-
 function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
-
-hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
-hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
-hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
-hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
-hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
-hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 function! HiInterestingWord(n)
     " Save our location.
     normal! mz
@@ -649,7 +544,12 @@ function! HiInterestingWord(n)
     " Move back to our original location.
     normal! `z
 endfunction
-
+hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
+hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
+hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
+hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
+hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
+hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 function! HtmlUnEscape()
   silent s/&lt;/</eg
   silent s/&gt;/>/eg
